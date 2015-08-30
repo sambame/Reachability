@@ -1,5 +1,7 @@
 [![Reference Status](https://www.versioneye.com/objective-c/reachability/reference_badge.svg?style=flat)](https://www.versioneye.com/objective-c/reachability/references)
 
+# **WARNING** there have been reports of apps being rejected when Reachability is used in a framework. The only solution to this so far is to rename the class.
+
 # Reachability
 
 This is a drop-in replacement for Apple's `Reachability` class. It is ARC-compatible, and it uses the new GCD methods to notify of network interface changes.
@@ -7,6 +9,10 @@ This is a drop-in replacement for Apple's `Reachability` class. It is ARC-compat
 In addition to the standard `NSNotification`, it supports the use of blocks for when the network becomes reachable and unreachable.
 
 Finally, you can specify whether a WWAN connection is considered "reachable".
+
+*DO NOT OPEN BUGS UNTIL YOU HAVE TESTED ON DEVICE*
+
+**BEFORE YOU OPEN A BUG ABOUT iOS6/iOS5 build errors, use Tag 3.2 or 3.1 as they support assign types**
 
 ## Requirements
 
@@ -33,7 +39,7 @@ This sample uses blocks to notify when the interface state has changed. The bloc
 		// keep in mind this is called on a background thread
 		// and if you are updating the UI it needs to happen
 		// on the main thread, like this:
-		
+
 		dispatch_async(dispatch_get_main_queue(), ^{
 		  NSLog(@"REACHABLE!");
 		});
